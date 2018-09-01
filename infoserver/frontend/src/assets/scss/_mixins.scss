@@ -1,0 +1,44 @@
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+}
+
+@mixin element($selector) {
+  @if length($selector) >= 2 {
+    @each $s in $selector {
+      &__#{$s} {
+        @content;
+      }
+    }
+  }
+  @else {
+    &__#{$selector} {
+      @content;
+    }
+  }
+}
+
+@mixin modifier($selector) {
+  @if length($selector) >= 2 {
+    @each $s in $selector {
+      &--#{$s} {
+        @content;
+      }
+    }
+  }
+  @else {
+    &__#{$selector} {
+      @content;
+    }
+  }
+}

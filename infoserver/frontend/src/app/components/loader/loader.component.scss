@@ -1,0 +1,141 @@
+
+@import "../../../assets/scss/variables";
+
+
+$loader-width: 100px;
+$loader-deg: 135deg;
+$loader-circle-time: 1.3s;
+$loader-full-screen-border-width: 8px;
+
+
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba($white, 0.5);
+  z-index: $loader-index;
+
+  &__box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: $loader-width;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    &__rotator {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      animation: box-anim ($loader-circle-time + 0.2) linear infinite;
+    }
+
+    &__clipper-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      animation: circle-wrapper-anim ($loader-circle-time * 4) $bezier infinite both;
+
+      &__item {
+        position: absolute;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+
+        &.left {
+          left: 0;
+
+          .circle {
+            left: 0;
+            border-right-color: transparent;
+            animation: left-circle-anim $loader-circle-time $bezier infinite both;
+          }
+        }
+
+        &.right {
+          right: 0;
+
+          .circle {
+            right: 0;
+            border-left-color: transparent;
+            animation: right-circle-anim $loader-circle-time $bezier infinite both;
+          }
+        }
+
+        .circle {
+          position: absolute;
+          top: 0;
+          width: 200%;
+          height: 100%;
+          border: 2px solid $blue, {
+            bottom-color: transparent;
+            radius: 50%;
+          };
+        }
+      }
+    }
+  }
+
+  &--full-screen {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: lighten($dark-grey, 75%);
+    z-index: $loader-full-screen-index;
+
+    .circle {
+      border-width: $loader-full-screen-border-width;
+    }
+  }
+}
+
+
+@keyframes box-anim {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes circle-wrapper-anim {
+  @for $i from 1 through 8 {
+    #{12.5 * $i}% {
+      transform: rotate(#{$loader-deg * $i});
+    }
+  }
+}
+
+@keyframes left-circle-anim {
+  0% {
+    transform: rotate($loader-deg - 5);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate($loader-deg - 5);
+  }
+}
+
+@keyframes right-circle-anim {
+  0% {
+    transform: rotate(-($loader-deg - 5));
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(-($loader-deg - 5));
+  }
+}

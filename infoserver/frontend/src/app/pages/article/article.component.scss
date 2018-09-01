@@ -1,0 +1,169 @@
+
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/media-query";
+@import "../../../assets/scss/_states";
+@import "../../../assets/scss/_modules";
+@import "../../../assets/scss/_mixins";
+
+.article {
+  position: relative;
+  width: 100%;
+
+  @include element("header") {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    display: block;
+    background-repeat: no-repeat !important;
+    overflow: auto;
+
+    @include element("filter") {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba($dark-grey, 0.5);
+    }
+
+    @include element("title") {
+      position: relative;
+      flex: 1 1 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @include element("meta") {
+      position: relative;
+      width: 100%;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @include mobile {
+        flex-direction: column-reverse;
+      }
+    }
+
+    .container {
+      margin-top: $header-height;
+      max-height: calc(100% - #{$header-height});
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+
+      /deep/ .date {
+        top: 20px;
+        right: 20px;
+      }
+
+      h1 {
+        font-size: 48px;
+        background: $dark-grey;
+        color: $white;
+        padding: 10px 20px;
+        margin: 10px 0;
+
+        a:visited {
+          color: $red;
+        }
+
+        @include tablet {
+          text-align: center;
+        }
+
+        @include mobile {
+          font-size: 36px;
+        }
+      }
+    }
+  }
+
+
+
+
+  @include element("body") {
+    position: relative;
+    padding: 20px 0;
+
+    @include element("box") {
+      position: relative;
+      width: 100%;
+      background: $white;
+      margin-bottom: 20px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      p {
+        line-height: 21px;
+        color: $dark-grey;
+      }
+    }
+
+    @include element(("description", "content")) {
+      padding: $article-body-box-vertical-padding;
+    }
+
+    @include element("description") {
+      font-size: 21px;
+    }
+
+    @include element("content") {
+      h2 {
+        margin: 40px 0;
+        font-size: 36px;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+
+    @include element(("form", "meta")) {
+      padding: 20px $article-body-box-vertical-padding;
+    }
+
+    @include element("meta") {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @include element("form") {
+      form {
+        @extend .inline-form;
+      }
+
+      h3 {
+        text-align: center;
+        color: $medium-grey;
+      }
+    }
+
+    @include element("comments") {
+      app-comment {
+        width: 100%;
+      }
+    }
+
+
+    @include laptop {
+      padding: 0;
+
+      .container {
+        padding: 0;
+
+        .article__body__box {
+          padding: 40px 20px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,82 @@
+
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/_modules";
+@import "../../../assets/scss/_states";
+
+$comment-padding: 20px;
+
+.comment {
+  position: relative;
+  width: 100%;
+  padding: $comment-padding $article-body-box-vertical-padding;
+  color: $dark-grey;
+  border-bottom: $input-border-width solid $medium-grey;
+  display: flex;
+  align-items: stretch;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: $avatar-medium-width / 2 - ($input-border-width / 2) + $article-body-box-vertical-padding;
+    width: $input-border-width;
+    height: 100%;
+    background: $medium-grey;
+  }
+
+  &__column {
+    position: relative;
+
+    &:first-of-type {
+      min-width: $avatar-medium-width + ($comment-padding / 2);
+    }
+    &:last-child {
+      width: calc(100% - #{$avatar-medium-width + ($comment-padding / 2)});
+    }
+  }
+
+  &__avatar {
+    @extend .avatar;
+    @extend .avatar--medium;
+    margin: 0;
+
+    img {
+      border: $input-border-width solid $medium-grey;
+    }
+  }
+
+  &__user {
+    position: relative;
+    width: 100%;
+    height: $avatar-medium-width;
+    line-height: $avatar-medium-width;
+
+    /deep/ .dropdown {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  &__content {
+    padding: 10px 0;
+
+    form {
+      @extend .inline-form;
+
+      /deep/ .text-area {
+        padding: ($button-height / 4) 0;
+      }
+    }
+  }
+
+
+  &--last {
+    border-bottom: 0;
+  }
+
+  &--loading {
+    @extend .is-loading;
+  }
+}

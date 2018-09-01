@@ -1,0 +1,81 @@
+<app-loader [fullScreen]="true" #loader></app-loader>
+<app-header #header></app-header>
+
+<div class="article" *ngIf="errors == null">
+  <div class="article__header" 
+       [style.backgroundImage]="'url('+ article?.image +')'" 
+       [style.backgroundPosition]="'50% ' + bgPos"
+       #articleHeader>
+
+    <div class="article__header__filter"></div>
+
+    <div class="container container__section">
+      <app-date [category]="article?.category" [date]="article?.date"></app-date>
+
+      <div class="article__header__title">
+        <ribbon [category]="article?.category" [hasCorner]="false"></ribbon>
+        <h1>{{article?.title}}</h1>
+      </div>
+
+      <div class="article__header__meta">
+        <news-info *ngIf="article?.user" media-type="image" theme="white" [src]="article?.user?.avatar">
+          <a [title]="article?.user?.firstName + ' ' + article?.user?.lastName"
+             [routerLink]="['/author', article?.user?.id]" 
+             [queryParams]="{tab: 'posts'}">{{article?.user?.firstName}} {{article?.user?.lastName}}</a>
+        </news-info>
+
+        <news-info theme="white" src="tags">
+          <a *ngFor="let tag of article?.tags" 
+             class="news__tag" 
+             [routerLink]="['/home', 1]"
+             [queryParams]="{tag: tag}">{{tag}}</a>
+        </news-info>
+      </div>
+    </div>
+  </div>
+  <div class="article__body">
+    <div class="container container__section">
+      <div class="article__body__box article__body__description">
+        <b>{{article?.description}}</b>
+      </div>
+      <div class="article__body__box article__body__content" [innerHTML]="article?.content"></div>
+      <div class="article__body__box article__body__meta">
+        <news-info src="comments">
+          <h3>{{article?.commentsCount}} {{commentName}}</h3>
+        </news-info>
+        <rating [rating]="article?.rating"
+                (onUp)="like($event)"
+                (onDown)="like($event)"
+                #rating></rating>
+      </div>
+      <div class="article__body__box article__body__form" *ngIf="authenticated">
+        <app-loader [enabled]="false" #formLoader></app-loader>
+        <form [formGroup]="commentForm" (submit)="addComment()">
+          <app-text-area formControlName="content"></app-text-area>
+          <input type="submit" value="Skomentuj" appButton appButtonPrimary/>
+        </form>
+      </div>
+      <div class="article__body__box article__body__form" *ngIf="!authenticated">
+        <h3>Aby dodać komentarz, musisz być zalogowany</h3>
+      </div>
+      <div class="article__body__box article__body__comments" *ngIf="article?.comments.length > 0">
+        <app-comment *ngFor="let c of article?.comments, let last = last" 
+                     [comment]="c"
+                     [isLast]="last"
+                     [isOwner]="user?.username == c?.user?.username"
+                     (onSave)="editComment($event)"
+                     (onDelete)="deleteComment($event)"></app-comment>
+      </div>
+    </div>
+  </div>
+
+  <back-to-top [scrollTopOffset]="articleHeader.offsetHeight"></back-to-top>
+  <app-toast #toast></app-toast>
+</div>
+
+<div class="article" *ngIf="errors != null">
+  <div class="container container__main">
+    <h1 class="title">Błąd {{errors?.status}}</h1>
+    <p>{{errors?.content}}</p>
+  </div>
+</div>

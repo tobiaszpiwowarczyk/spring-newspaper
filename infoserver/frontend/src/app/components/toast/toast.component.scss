@@ -1,0 +1,69 @@
+
+@import "../../../assets/scss/variables";
+
+.toast {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  transition: .2s $bezier;
+  z-index: $toast-index;
+
+  &__icon,
+  &__close-btn {
+    position: relative;
+    width: $header-height;
+    height: 100%;
+    text-align: center;
+    line-height: $header-height;
+    font-size: 21px;
+  }
+
+  &__close-btn {
+    cursor: pointer;
+  }
+
+  &__content {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &--shown {
+    height: $header-height;
+  }
+
+
+  
+  &--danger {
+    background: $red;
+    color: darken($red, $darken-offset);
+
+    .toast__close-btn:hover {
+      color: darken($red, $darken-offset + 5);
+    }
+  }
+
+  &--warming {
+    background: $yellow;
+    color: darken($yellow, $darken-offset);
+
+    .toast__close-btn:hover {
+      color: darken($yellow, $darken-offset + 5);
+    }
+  }
+
+  &--success {
+    background: $green;
+    color: darken($green, $darken-offset);
+
+    .toast__close-btn:hover {
+      color: darken($green, $darken-offset + 5);
+    }
+  }
+}

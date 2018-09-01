@@ -1,0 +1,18 @@
+<div class="loader"
+     [ngClass]="{
+       'loader--full-screen': fullScreen
+     }"
+     *ngIf="enabled">
+  <div class="loader__box" [style.width]="!fullScreen ? width : inherit">
+    <div class="loader__box__rotator">
+      <div class="loader__box__clipper-wrapper">
+        <div class="loader__box__clipper-wrapper__item left">
+          <div class="circle"></div>
+        </div>
+        <div class="loader__box__clipper-wrapper__item right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

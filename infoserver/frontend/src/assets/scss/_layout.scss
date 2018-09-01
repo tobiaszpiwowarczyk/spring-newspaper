@@ -1,0 +1,59 @@
+
+@import "variables";
+@import "media-query";
+@import "_modules";
+
+.container {
+    position: relative;
+    width: $laptop-width;
+    height: 100%;
+    margin: 0 auto;
+
+    &__section {
+        @include laptop {
+            padding: 20px;
+        }
+    }
+
+    &__main {
+        padding-top: $header-height + 20px;
+
+        &--filled {
+            min-height: 100vh;
+        }
+
+        @include laptop {
+            padding: 20px, {
+                top: $header-height + 20px;
+            };
+        }
+    }
+
+    @include laptop {
+        width: 100%;
+    };
+}
+
+
+.profile {
+    position: relative;
+    width: 100%;
+  
+    /deep/ app-tab-header {
+      flex: 1 1 auto;
+      position: relative;
+      bottom: -$header-height;
+    }
+
+    &__header {
+        position: relative;
+        width: 100%;
+        height: 50vh;
+        background-size: cover;
+        
+        .container {
+            display: flex;
+            align-items: flex-end;
+        }
+    }
+  }

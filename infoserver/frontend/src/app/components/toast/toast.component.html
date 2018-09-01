@@ -1,0 +1,15 @@
+<div class="toast toast--{{type.name}}"
+     [ngClass]="{
+       'toast--shown': shown
+     }">
+
+  <div class="toast__icon">
+    <div class="fa fa-{{type.icon}}"></div>
+  </div>
+  <div class="toast__content">
+    <h3>{{message}}</h3>
+  </div>
+  <div class="toast__close-btn" (click)="hide()">
+    <div class="fa fa-times"></div>
+  </div>
+</div>

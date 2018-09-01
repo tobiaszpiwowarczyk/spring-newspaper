@@ -1,0 +1,41 @@
+<div class="rating">
+  
+  <app-loader #ratingLoader></app-loader>
+
+  <div class="rating__column">
+    <h3>{{rating?.value | percentage}}</h3>
+  </div>
+
+  <div class="rating__column">
+    <div class="rating__thumbs">
+      <div class="rating__thumb rating__thumb--up"
+           [ngClass]="{
+             'rating__thumb--disabled': disabled
+           }"
+           *ngIf="rating?.thumbsUp"
+           (click)="up()">
+           
+        <i class="fa fa-fw fa-thumbs-up"></i>
+        <span>{{rating?.thumbsUp.length}}</span>
+      </div>
+      <div class="rating__thumb rating__thumb--down"
+           [ngClass]="{
+             'rating__thumb--disabled': disabled
+           }"
+           *ngIf="rating?.thumbsDown"
+           (click)="down()">
+
+        <i class="fa fa-fw fa-thumbs-down"></i>
+        <span>{{rating?.thumbsDown.length}}</span>
+      </div>
+    </div>
+    
+    <div class="rating__progress-bar">
+      <div class="rating__progress-bar--up"
+           [ngStyle]="{'width': rating?.value | percentage}"></div>
+      <div class="rating__progress-bar--down"
+           [ngStyle]="{'width': (1 - rating?.value) | percentage}"></div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,33 @@
+
+@import "../../../assets/scss/variables";
+
+$switch-width: 40px;
+$switch-bubble-offset: 5px;
+
+.switch {
+    position: relative;
+    width: $switch-width * 2;
+    height: $switch-width;
+    background: $grey;
+    border-radius: $switch-width;
+    transition: .2s $bezier;
+    
+    &::after {
+        position: absolute;
+        top: -$switch-bubble-offset;
+        left: -$switch-bubble-offset;
+        width: $switch-width + $switch-bubble-offset;
+        height: $switch-width + $switch-bubble-offset;
+        background: $white;
+        cursor: pointer;
+        transition: .2s $bezier;
+    }
+
+    &--active {
+        background: $blue;
+
+        &::after {
+            right: $switch-bubble-offset;
+        }
+    }
+}

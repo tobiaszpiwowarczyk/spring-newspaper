@@ -1,0 +1,17 @@
+
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/media-query";
+
+.login-form {
+  position: relative;
+  width: $mobile-width;
+  margin: $header-height auto;
+  background: $white;
+  box-shadow: $shadow-offset $shadow-blur $shadow-color;
+  padding: 40px;
+
+  h1 {
+    margin-top: 0;
+    text-align: center;
+  }
+}

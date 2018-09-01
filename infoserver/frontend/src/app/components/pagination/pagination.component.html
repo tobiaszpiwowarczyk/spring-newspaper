@@ -1,0 +1,17 @@
+<div class="pagination">
+  <a class="pagination__link pagination__link__icon pagination__link__icon__prev"
+     [class.pagination__link--disabled]="paginationObj?.isFirst"
+     [routerLink]="['/home', prev()]"
+     [queryParams]="params"></a>
+
+  <a *ngFor="let p of pages"
+     [routerLink]="['/home', p]"
+     routerLinkActive="pagination__link--active"
+     [queryParams]="params"
+     class="pagination__link">{{p}}</a>
+
+  <a class="pagination__link pagination__link__icon pagination__link__icon__next"
+     [class.pagination__link--disabled]="paginationObj?.isLast"
+     [routerLink]="['/home', next()]"
+     [queryParams]="params"></a>
+</div>

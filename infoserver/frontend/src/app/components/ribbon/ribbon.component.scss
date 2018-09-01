@@ -1,0 +1,79 @@
+
+@import "../../../assets/scss/variables";
+
+.ribbon {
+  position: relative;
+  padding: 5px 20px;
+  color: $white;
+  font-weight: 900;
+  display: block;
+
+  &.ribbon--cornered {
+    position: absolute;
+    left: -$ribbon-right-offset;
+    top: $ribbon-right-offset;
+
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: -$ribbon-right-offset;
+      border: ($ribbon-right-offset / 2) solid;
+    }
+  }
+
+  &.ribbon--music {
+    background: $blue;
+    color: darken($blue, $darken-offset);
+
+    &.ribbon--cornered::after {
+      border-color: darken($blue, $darken-offset) darken($blue, $darken-offset) transparent transparent;
+    }
+  }
+
+  &.ribbon--health {
+    background: $green;
+    color: darken($green, $darken-offset);
+
+    &.ribbon--cornered::after {
+      border-color: darken($green, $darken-offset) darken($green, $darken-offset) transparent transparent;
+    }
+  }
+
+  &.ribbon--science {
+    background: $orange;
+    color: darken($orange, $darken-offset);
+
+    &.ribbon--cornered::after {
+      border-color: darken($orange, $darken-offset) darken($orange, $darken-offset) transparent transparent;
+    }
+  }
+
+  &.ribbon--war {
+    background: $red;
+    color: darken($red, $darken-offset);
+
+    &.ribbon--cornered::after {
+      border-color: darken($red, $darken-offset) darken($red, $darken-offset) transparent transparent;
+    }
+  }
+
+  &.ribbon--politics {
+    background: $purple;
+    color: darken($purple, $darken-offset);
+
+    &.ribbon--cornered::after {
+      border-color: darken($purple, $darken-offset) darken($purple, $darken-offset) transparent transparent;
+    }
+  }
+
+  &.ribbon--food {
+    background: $yellow;
+    color: darken($yellow, $darken-offset);
+
+    &.ribbon--cornered::after {
+      border-color: darken($yellow, $darken-offset) darken($yellow, $darken-offset) transparent transparent;
+    }
+  }
+}

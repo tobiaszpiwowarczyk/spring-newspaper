@@ -1,0 +1,47 @@
+<app-loader [fullScreen]="true" #loader></app-loader>
+<app-header #header></app-header>
+
+<div class="profile">
+  <div class="profile__header"
+       [style.backgroundImage]="'url('+ user?.bgImage +')'"
+       [style.backgroundPosition]="'50% ' + bgPos"
+       #profileHeader>
+
+    <div class="container container__section">
+      <div class="profile__data">
+        <div class="profile__data__avatar">
+          <img src="{{user?.avatar}}" alt="{{user?.firstName}} {{user?.lastName}}" />
+        </div>
+        <div class="profile__data__content">
+          <h2>{{user?.firstName}} {{user?.lastName}}</h2>
+          <div class="profile__data__content__meta">
+            <div class="profile__data__content__meta__item">
+              <div class="fa fa-fw fa-envelope-o"></div>
+              <span>{{user?.email}}</span>
+            </div>
+            <div class="profile__data__content__meta__item" *ngIf="user?.posts.length > 0">
+              <div class="fa fa-fw fa-newspaper-o"></div>
+              <span>{{user?.posts.length}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <app-tab-header>
+        <app-tab-header-item id="posts" *ngIf="user?.posts.length > 0">Posty</app-tab-header-item>
+        <app-tab-header-item id="info">Informacje</app-tab-header-item>
+      </app-tab-header>
+    </div>
+  </div>
+
+  <app-tab-content>
+    <app-tab-content-item id="posts" *ngIf="user?.posts.length > 0">
+      <news *ngFor="let n of user?.posts" [newsObj]="n" [showAuthor]="false"></news>
+    </app-tab-content-item>
+    <app-tab-content-item id="info">
+      <h1>This is an info</h1>
+    </app-tab-content-item>
+  </app-tab-content>
+
+  <back-to-top [scrollTopOffset]="profileHeader.offsetHeight"></back-to-top>
+</div>

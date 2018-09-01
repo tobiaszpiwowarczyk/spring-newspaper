@@ -1,0 +1,98 @@
+
+@import "variables";
+@import "media-query";
+
+
+$profile-data-padding: 20px;
+
+
+.title {
+  position: relative;
+  margin: 30px 0;
+  font: {
+    weight: 100;
+    size: 3em;
+  }
+  color: $medium-grey;
+}
+
+
+
+.avatar {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 100px;
+
+  img {
+    width: 100%;
+    border-radius: 100px;
+  }
+
+  &--small {
+    width: $avatar-small-width;
+    min-width: $avatar-small-width;
+    height: $avatar-small-width;
+    min-height: $avatar-small-width;
+  }
+
+  &--medium {
+    width: $avatar-medium-width;
+    min-width: $avatar-medium-width;
+    height: $avatar-medium-width;
+    min-height: $avatar-medium-width;
+  }
+
+  &--large {
+    width: $avatar-large-width;
+    min-width: $avatar-large-width;
+    height: $avatar-large-width;
+    min-height: $avatar-large-width;
+    margin-right: $profile-data-padding;
+  }
+}
+
+
+
+.profile__data {
+  position: relative;
+  bottom: -$header-height;
+  left: 0;
+  height: $avatar-large-width + ($profile-data-padding * 2);
+  padding: $profile-data-padding;
+  background: $white;
+  color: $dark-grey;
+  display: flex;
+  box-shadow: $shadow-offset $shadow-blur $shadow-color;
+
+  &__avatar {
+      @extend .avatar;
+      @extend .avatar--large;
+  }
+
+  &__content {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__meta {
+      margin-top: 10px;
+      font-size: 14px;
+      color: $medium-grey;
+    }
+  }
+}
+
+
+.inline-form {
+  position: relative;
+  width: 100%;
+  display: flex;
+
+  app-text-area {
+    flex: 1 1 auto;
+    max-width: calc(100% - #{$button-height * 3});
+  }
+}

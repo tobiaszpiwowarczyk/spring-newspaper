@@ -1,0 +1,14 @@
+
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/_layout";
+
+.profile {
+  position: relative;
+  width: 100%;
+
+  /deep/ app-tab-header {
+    flex: 1 1 auto;
+    position: relative;
+    bottom: -$header-height;
+  }
+}

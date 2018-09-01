@@ -1,0 +1,19 @@
+<app-loader [fullScreen]="true" #loader></app-loader>
+<app-header></app-header>
+
+<div class="container container__main" *ngIf="errors == null">
+  <h1 class="title" [innerHTML]="homeHeaderText"></h1>
+  
+  <div class="news">
+    <news *ngFor="let n of home?.news"
+          [newsObj]="n"></news>
+  </div>
+  
+  <pagination [paginationObj]="home?.pagination"></pagination>
+  <back-to-top [scrollTopOffset]="300"></back-to-top>
+</div>
+
+<div class="container container__main" *ngIf="errors != null">
+  <h1 class="title">Błąd {{errors?.status}}</h1>
+  <p>{{errors?.content}}</p>
+</div>

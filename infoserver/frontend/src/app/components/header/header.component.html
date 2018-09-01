@@ -1,0 +1,81 @@
+<header class="header" [class.header--active]="active" #main>
+  
+    <div class="container">
+      <div class="menu">
+        <a class="header__item header__item__title"
+           [routerLink]="['/home', 1]">Info <span>SERVICE</span>
+        </a>
+
+        <div class="header__search-box"
+             [class.header__search-box--fluid]="searchOpened">
+
+          <!-- TODO: we need to moedrnize -->
+          <form [formGroup]="searchForm">
+            <input type="text" formControlName="tag" (input)="showSuggests($event)" #searchBox/>
+            <button type="submit" (click)="toggleSearch()" appButton appButtonPrimary appButtonIconized>
+              <div class="fa fa-search"></div>
+            </button>
+          </form>
+
+          <div class="header__search-box__suggests"
+               [class.header__search-box__suggests--shown]="suggestsShown">
+
+            <app-loader #searchLoader></app-loader>
+
+            <div *ngIf="suggests">
+              <a *ngFor="let s of suggests"
+                 class="header__search-box__suggests__item"
+                 [routerLink]="['/home', 1]"
+                 [queryParams]="{tag: s}"
+                 (click)="closeSuggests()">{{s}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="header__item header__item--compact menu-opener"
+           [class.menu-opener--opened]="menuOpened"
+           (click)="toggleMenu()">
+
+        <div class="menu-opener__rotator">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div class="menu"
+           [class.menu--opened]="menuOpened">
+
+        <a [routerLink]="['/about']" 
+           routerLinkActive="header__item--active"
+           class="header__item">About</a>
+        
+
+
+        <a [routerLink]="['/login']" 
+           class="header__item" 
+           routerLinkActive="header__item--active"
+           *ngIf="!authenticated">Sign in</a>        
+
+
+
+        <a class="header__item" 
+            [routerLink]="['/profile']"
+            [queryParams]="{tab: 'info'}"
+            [class.header__item--active]="isActive(['/profile'])"
+            *ngIf="authenticated">
+
+          <img [src]="userData?.avatar" 
+                alt="{{userData?.firstName}} {{userData?.lastName}}"
+                class="avatar" />
+
+          <span>{{userData?.firstName}} {{userData?.lastName}}</span>
+        </a>
+
+        <a class="header__item" *ngIf="authenticated" (click)="logout()">Sign out</a>
+
+      </div>
+    </div>
+  
+  </header>

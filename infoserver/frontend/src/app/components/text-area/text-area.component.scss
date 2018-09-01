@@ -1,0 +1,20 @@
+
+@import "../../../assets/scss/variables";
+
+.text-area {
+  position: relative;
+  width: 100%;
+  min-height: $button-height;
+  padding: $button-height / 4;
+
+  &[contenteditable=true] {
+    border: $input-border-width solid $medium-grey;
+    transition: border-color .2s $bezier;
+
+    &:focus {
+      background: rgba(lighten($blue, 75%), 0.5);
+      border-color: $blue;
+      box-shadow: 0 0 $shadow-blur $blue;
+    }
+  }
+}

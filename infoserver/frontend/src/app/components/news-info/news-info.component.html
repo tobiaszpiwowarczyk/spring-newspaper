@@ -1,0 +1,11 @@
+<div class="news-info news-info--{{theme}}">
+  <div *ngIf="mediaType == 'icon'" class="news-info__icon">
+    <i class="fa fa-{{src}}"></i>
+  </div>
+  <div *ngIf="mediaType == 'image'" class="news-info__image">
+    <img [src]="src" [alt]="src" />
+  </div>
+  <div class="news-info__content">
+    <ng-content></ng-content>
+  </div>
+</div>

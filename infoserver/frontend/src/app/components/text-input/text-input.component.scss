@@ -1,0 +1,99 @@
+
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/_mixins";
+
+
+.text-input {
+  position: relative;
+  width: 100%;
+  min-height: $header-height;
+  margin: 15px 0;
+
+  &__container {
+    height: $header-height;
+    display: flex;
+    align-items: center;
+    border: $input-border-width solid $medium-grey;
+    transition: .2s $bezier;
+  }
+
+  &__validator {
+    position: relative;
+    width: 100%;
+    margin-top: 5px;
+  }
+
+  &__icon {
+    position: relative;
+    min-width: $header-height;
+    height: 100%;
+    text-align: center;
+    line-height: $header-height - ($input-border-width * 2) + 1;
+    font-size: 21px;
+    color: $medium-grey;
+    transition: .2s $bezier;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 20%;
+      width: 2px;
+      height: 60%;
+      background: $medium-grey;
+      transition: .2s $bezier;
+    }
+  }
+
+  input {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0 15px;
+    font-size: 16px;
+    border: 0;
+  }
+
+
+  &--focused {
+
+    .text-input__container {
+      border-color: $dark-grey;
+    }
+
+    .text-input__icon {
+      color: $dark-grey;
+
+      &::after {
+        background: $dark-grey;
+      }
+    }
+  }
+
+  
+  &--invalid {
+    
+    .text-input__container {
+      border-color: $red;
+    }
+    
+    .text-input__icon {
+      color: $red;
+
+      &::after {
+        background: $red;
+      }
+    }
+
+    input {
+      @include placeholder {
+        color: $red;
+      }
+    }
+
+    .text-input__validator {
+      color: $red;
+    }
+  }
+}

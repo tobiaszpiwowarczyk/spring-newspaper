@@ -1,0 +1,86 @@
+
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/media-query";
+
+
+$pagination-width: 50px;
+$pagination-border-width: 5px;
+
+
+.pagination {
+  position: relative;
+  margin: 30px 0;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+
+  &__link {
+    position: relative;
+    min-width: $pagination-width;
+    height: $pagination-width;
+    border: $pagination-border-width solid $teal, {
+      radius: 100px;
+    };
+    color: $teal;
+    font-weight: 900;
+    margin: 0 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &__icon {
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        width: 7px;
+        height: 7px;
+      }
+
+      &__prev {
+        margin: {
+          left: 0;
+          right: 15px;
+        };
+        &::after {
+          left: calc(50% + 2px);
+          border: {
+            left: 3px solid $teal;
+            bottom: 3px solid $teal;
+          }
+        }
+      }
+
+      &__next {
+        margin: {
+          right: 0;
+          left: 15px;
+        }
+        &::after {
+          left: calc(50% - 2px);
+          border: {
+            top: 3px solid $teal;
+            right: 3px solid $teal;
+          }
+        }
+      }
+    }
+
+    &--active {
+      color: lighten($dark-grey, 75%);
+      background: $teal;
+    }
+
+    &--disabled {
+      border-color: $medium-grey;
+      cursor: default;
+
+      &::after {
+        border-color: $medium-grey;
+      }
+    }
+  }
+}

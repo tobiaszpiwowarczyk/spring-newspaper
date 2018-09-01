@@ -1,0 +1,43 @@
+<div class="comment"
+     [ngClass]="{
+       'comment--last': isLast
+     }">
+
+  <app-loader [enabled]="comment?.processing" #commentLoader></app-loader>
+
+  <div class="comment__column">
+    <div class="comment__avatar">
+      <img src="{{comment?.user?.avatar}}" alt="{{comment?.user?.firstName}} {{comment?.user?.lastName}}" />
+    </div>
+  </div>
+
+
+  <div class="comment__column">
+    <div class="comment__user">
+      <h3>
+        <a [routerLink]="['/author', comment?.user?.id]" [queryParams]="{tab: 'posts'}">
+          {{comment?.user?.firstName}} {{comment?.user?.lastName}}
+        </a>
+      </h3>
+
+      <app-dropdown *ngIf="isOwner">
+        <app-dropdown-option icon="pencil" content="Edytuj" (onClick)="edit()"></app-dropdown-option>
+        <app-dropdown-option icon="times" content="Usuń" (onClick)="delete()"></app-dropdown-option>
+      </app-dropdown>
+    </div>
+    <div class="comment__content">
+      <form [formGroup]="editCommentForm" (submit)="save()">
+        <app-text-area formControlName="content" [enabled]="editable"></app-text-area>
+        <button type="submit" *ngIf="editable" appButton appButtonPrimary appButtonIconized>
+          <div class="fa fa-floppy-o"></div>
+        </button>
+        <button type="button" *ngIf="editable" (click)="cancel()" appButton appButtonIconized>
+          <div class="fa fa-times"></div>
+        </button>
+      </form>
+    </div>
+    <div class="comment__meta">
+      <news-info src="clock-o">{{comment?.date}}</news-info>
+    </div>
+  </div>
+</div>

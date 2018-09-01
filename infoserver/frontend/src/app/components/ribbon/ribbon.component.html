@@ -1,0 +1,6 @@
+<a class="ribbon ribbon--{{category | lowercase}}"
+   [class.ribbon--cornered]="!hasCorner"
+   [routerLink]="['/home', 1]"
+   [queryParams]="{category: category | lowercase}">
+  {{category}}
+</a>

@@ -1,0 +1,38 @@
+
+@import "../../../../assets/scss/variables";
+
+.dropdown-option {
+  position: relative;
+  width: 100%;
+  height: $avatar-medium-width;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid rgba($white, 0.2);
+
+  &__icon,
+  &__content {
+    position: relative;
+    float: left;
+  }
+
+  &__icon {
+    width: $avatar-medium-width;
+    height: $avatar-medium-width;
+    text-align: center;
+    line-height: $avatar-medium-width;
+  }
+
+  &__content {
+    width: calc(100% - #{$avatar-medium-width});
+    height: 100%;
+    line-height: $avatar-medium-width;
+  }
+
+  &:hover {
+    background: rgba($dark-grey, 0.2);
+  }
+
+  &:active {
+    background: rgba($dark-grey, 0.4);
+  }
+}

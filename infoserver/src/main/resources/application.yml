@@ -1,0 +1,33 @@
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+  dashboard:
+    path: /eureka-dashboard
+
+zuul:
+  routes:
+    info-service-api:
+      path: /api/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      url: https://boiling-fjord-43259.herokuapp.com/api
+#      url: http://localhost:8001/api
+    media-web-service:
+      path: /media/**
+      url: https://infinite-temple-60109.herokuapp.com/
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+
+ribbon:
+  ReadTimeout: 100000
+  ConnectTimeout: 100000
+      
+server:
+  port: 8000

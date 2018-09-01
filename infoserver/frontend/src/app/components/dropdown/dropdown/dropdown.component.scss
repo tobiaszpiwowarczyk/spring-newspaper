@@ -1,0 +1,76 @@
+
+@import "../../../../assets/scss/variables";
+
+.dropdown {
+  position: relative;
+  height: $avatar-medium-width;
+  color: $dark-grey;
+  z-index: $dropdown-index;
+
+  &:not(.dropdown--opened) {
+    .dropdown__label {
+      &:hover {
+        color: $blue;
+      }
+    }
+  }
+
+  &__label {
+    position: relative;
+    min-width: $avatar-medium-width;
+    height: 100%;
+    background: $white;
+    cursor: pointer;
+    transition: color .2s $bezier;
+
+    &__text,
+    &__caret {
+      position: relative;
+      float: left;
+    }
+
+    &__caret {
+      width: $avatar-medium-width;
+      height: 100%;
+      text-align: center;
+      line-height: $avatar-medium-width;
+      font-size: 21px;
+    }
+
+    &__text {
+      padding: 0 15px;
+
+      h3 {
+        line-height: $avatar-medium-width;
+      }
+    }
+  }
+
+  &__content {
+    position: absolute;
+    right: 0;
+    top: $avatar-medium-width;
+    min-width: 150px;
+    background: $blue;
+    color: $white;
+    display: none;
+
+    app-dropdown-option:last-child {
+      /deep/ .dropdown-option {
+        border-bottom: none;
+      }
+    }
+  }
+
+  &--opened {
+
+    .dropdown__label {
+      background: $blue;
+      color: $white;
+    }
+
+    .dropdown__content {
+      display: block;
+    }
+  }
+}

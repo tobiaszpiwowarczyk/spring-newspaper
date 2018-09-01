@@ -1,0 +1,22 @@
+<div class="text-input"
+     [ngClass]="{
+      'text-input--focused': focused,
+      'text-input--invalid': required
+     }">
+
+  <div class="text-input__container">
+    <div class="text-input__icon">
+      <div class="fa fa-{{icon}}"></div>
+    </div>
+    <input [type]="type"
+           [placeholder]="label"
+           [ngModel]="value"
+           (ngModelChange)="changeValue($event)"
+           (focus)="focus()"
+           (blur)="blur()"/>
+  </div>
+  
+  <div class="text-input__validator">
+    <span *ngIf="required">To pole jest wymagane</span>
+  </div>
+</div>

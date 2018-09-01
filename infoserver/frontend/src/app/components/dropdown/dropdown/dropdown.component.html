@@ -1,0 +1,20 @@
+<div class="dropdown"
+     [ngClass]="{
+       'dropdown--opened': opened
+     }">
+  <div class="dropdown__label" (click)="toggle()">
+    <div class="dropdown__label__text" *ngIf="label">
+        <h3>{{label}}</h3>
+    </div>
+    <div class="dropdown__label__caret">
+      <div class="fa"
+           [ngClass]="{
+             'fa-angle-down': !opened,
+             'fa-angle-up': opened
+           }"></div>
+    </div>
+  </div>
+  <div class="dropdown__content" (click)="close()">
+    <ng-content></ng-content>
+  </div>
+</div>

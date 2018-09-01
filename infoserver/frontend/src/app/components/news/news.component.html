@@ -1,0 +1,51 @@
+<div class="news">
+
+  <div class="news__column">
+    <div class="news__column__image">
+      <img src="{{newsObj.thumbnail}}" alt="{{newsObj.title}}" />
+      <div class="news__column__image__layer"></div>
+      <app-date [category]="newsObj.category" [date]="newsObj.date"></app-date>
+
+      <news-info
+              theme="white"
+              media-type="image"
+              [src]="newsObj.user?.avatar"
+              *ngIf="showAuthor">
+
+        <a [routerLink]="['/author', newsObj?.user.id]" 
+           [queryParams]="{tab: 'posts'}">
+          {{newsObj?.user.firstName}} {{newsObj?.user.lastName}}
+        </a>
+
+      </news-info>
+    </div>
+    <ribbon category="{{newsObj.category}}"></ribbon>
+  </div>
+
+  <div class="news__column">
+    <div class="news__column__header">
+      <h1>
+        <a [routerLink]="['/article', newsObj.id]">{{newsObj.title}}</a>
+      </h1>
+    </div>
+
+    <div class="news__column__body">{{newsObj.description}}</div>
+
+    <div class="news__column__footer">
+      <news-info src="star">
+        {{newsObj?.rating.value | percentage}}
+      </news-info>
+
+      <news-info src="comments-o">
+        {{newsObj.commentsCount}}
+      </news-info>
+
+      <news-info src="tags">
+        <a *ngFor="let tag of newsObj.tags" 
+           class="news__tag" 
+           [routerLink]="['/home', 1]"
+           [queryParams]="{tag: tag}">{{tag}}</a>
+      </news-info>
+    </div>
+  </div>
+</div>

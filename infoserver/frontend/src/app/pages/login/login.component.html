@@ -1,0 +1,27 @@
+<app-loader [fullScreen]="true" #mainLoader></app-loader>
+<app-header></app-header>
+
+<div class="container container__main container__main--filled">
+  <div class="login-form">
+  <app-loader [enabled]="false" #formLoader></app-loader>
+    <h1 class="title">Zaloguj się</h1>
+
+    <form [formGroup]="loginForm" (submit)="login()">
+
+      <text-input label="Nazwa użytkownika..." 
+                  icon="user" formControlName="username" 
+                  [required]="loginForm.controls['username']?.errors?.required && submitted">
+                </text-input>
+
+      <text-input label="Hasło..."
+                  type="password" 
+                  icon="lock" formControlName="password" 
+                  [required]="loginForm.controls['password']?.errors?.required && submitted">
+                </text-input>
+
+      <input type="submit" value="Zaloguj się" appButton appButtonPrimary appButtonFluid/>
+    </form>
+  </div>
+
+  <app-toast #toast></app-toast>
+</div>

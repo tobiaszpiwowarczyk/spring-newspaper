@@ -1,0 +1,10 @@
+<div class="dropdown-option" 
+     [id]="content.replace(' ', '_')"
+     (click)="click()">
+  <div class="dropdown-option__icon" *ngIf="icon">
+    <div class="fa fa-{{icon}}"></div>
+  </div>
+  <div class="dropdown-option__content">
+    <span>{{content}}</span>
+  </div>
+</div>

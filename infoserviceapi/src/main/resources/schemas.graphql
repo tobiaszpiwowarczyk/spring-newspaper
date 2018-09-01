@@ -1,0 +1,111 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    allPosts(page: Int, size: Int): Page
+    post(id: String): Post
+    tags: [String]
+    tagsSuggests(value: String): [String]
+    allPostsByTag(page: Int, size: Int, value: String): Page
+    allPostsByCategory(page: Int, size: Int, category: PostCategory): Page
+    categories: [String]
+
+    allComments: [PostComment]
+    allCommentsByPostId(postId: String): [PostComment]
+
+    allUsers: [User]
+    userById(id: String): User
+    userByUsername(username: String): User
+}
+
+type Mutation {
+    like(postId: String, username: String, thumbType: String): PostRating
+
+    addComment(postId: String, username: String, content: PostCommentInput!): PostComment
+    editComment(comment: PostCommentInput!): PostComment
+    removeComment(comment: PostCommentInput!): String
+
+}
+
+
+type Page {
+    content: [Post]
+    totalPages: Int
+    totalElements: Int
+    currentPage: Int
+    first: Boolean
+    last: Boolean
+}
+
+type Post {
+    id: String
+    title: String
+    description: String
+    content: String
+    tags: [String]
+    date: String
+    category: PostCategory
+    rating: PostRating
+    image: PostImage
+    user: User
+    commentsCount: Int
+    comments: [PostComment]
+}
+type PostRating {
+    thumbsUp: [User]
+    thumbsDown: [User]
+    value: Float
+}
+type PostImage {
+    thumbnail: String
+    landscape: String
+}
+
+input PostCommentInput {
+    id?: String
+    content?: String
+    user?: UserInput
+}
+
+
+type PostComment {
+    id: String
+    content: String
+    date: String
+    post: Post
+    user: User
+}
+
+enum PostCategory {
+    MUSIC
+    HEALTH
+    SCIENCE
+    WAR
+    POLITICS
+    FOOD
+}
+
+
+input UserInput {
+    username: String
+}
+type User {
+    id: String
+    username: String
+    password: String
+    firstName: String
+    lastName: String
+    email: String
+    avatar: String
+    bgImage: String
+    role: String
+    userSex: UserSex
+    posts?: [Post]
+}
+
+enum UserSex {
+    MALE
+    FEMALE
+}

@@ -1,0 +1,12 @@
+
+@import "../../../../assets/scss/variables";
+
+.tab-header {
+  position: relative;
+  width: 100%;
+  height: $header-height;
+  background: $white;
+  color: $dark-grey;
+  box-shadow: $shadow-offset $shadow-blur $shadow-color;
+  z-index: 1;
+}

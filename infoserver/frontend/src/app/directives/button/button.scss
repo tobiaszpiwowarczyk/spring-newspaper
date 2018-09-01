@@ -1,0 +1,53 @@
+
+@import "../../../assets/scss/variables";
+
+$button-hover-darken-offset: 5%;
+$button-push-darken-offset: 10%;
+
+.button {
+  position: relative;
+  width: $button-height * 3;
+  height: $button-height;
+  background: $medium-grey;
+  border: 0;
+  color: $dark-grey;
+  cursor: pointer;
+  font: {
+    size: 16px;
+    weight: 900;
+  };
+  transition: .2s $bezier;
+
+  &:hover {
+    background: darken($medium-grey, $button-hover-darken-offset);
+  }
+
+  &:active {
+    background: darken($medium-grey, $button-push-darken-offset);
+  }
+
+  &--primary {
+    background: $blue;
+    color: $white;
+
+    &:hover {
+      background: darken($blue, $button-hover-darken-offset);
+    }
+  
+    &:active {
+      background: darken($blue, $button-push-darken-offset);
+    }
+  }
+
+  &--fluid {
+    width: 100%;
+  }
+
+  &--iconized {
+    width: $button-height;
+
+    .fa {
+      pointer-events: none;
+    }
+  }
+}

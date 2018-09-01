@@ -1,0 +1,27 @@
+
+@import "../../../assets/scss/variables";
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: $dark-grey;
+  color: $grey;
+  border-radius: 3px;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
+  transition: .2s ease-in-out;
+  z-index: $back-to-top-index;
+
+  &:hover {
+    color: $blue;
+  }
+
+  &--hidden {
+    display: none;
+  }
+}
