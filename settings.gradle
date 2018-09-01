@@ -1,0 +1,5 @@
+rootProject.name = "spring-newspaper"
+
+include ":infoserver"
+include ":infoserviceapi"
+include ":mediawebservice"

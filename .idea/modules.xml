@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/simplerest-app.iml" filepath="$PROJECT_DIR$/simplerest-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/infoserver/infoserver.iml" filepath="$PROJECT_DIR$/.idea/modules/infoserver/infoserver.iml" group="infoserver" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/infoserver/infoserver_main.iml" filepath="$PROJECT_DIR$/.idea/modules/infoserver/infoserver_main.iml" group="infoserver" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/infoserver/infoserver_test.iml" filepath="$PROJECT_DIR$/.idea/modules/infoserver/infoserver_test.iml" group="infoserver" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/infoserviceapi/infoserviceapi.iml" filepath="$PROJECT_DIR$/.idea/modules/infoserviceapi/infoserviceapi.iml" group="infoserviceapi" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/infoserviceapi/infoserviceapi_main.iml" filepath="$PROJECT_DIR$/.idea/modules/infoserviceapi/infoserviceapi_main.iml" group="infoserviceapi" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/infoserviceapi/infoserviceapi_test.iml" filepath="$PROJECT_DIR$/.idea/modules/infoserviceapi/infoserviceapi_test.iml" group="infoserviceapi" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mediawebservice/mediawebservice.iml" filepath="$PROJECT_DIR$/.idea/modules/mediawebservice/mediawebservice.iml" group="mediawebservice" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mediawebservice/mediawebservice_main.iml" filepath="$PROJECT_DIR$/.idea/modules/mediawebservice/mediawebservice_main.iml" group="mediawebservice" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mediawebservice/mediawebservice_test.iml" filepath="$PROJECT_DIR$/.idea/modules/mediawebservice/mediawebservice_test.iml" group="mediawebservice" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring-newspaper.iml" filepath="$PROJECT_DIR$/.idea/modules/spring-newspaper.iml" />
     </modules>
   </component>
 </project>
